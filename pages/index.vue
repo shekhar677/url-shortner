@@ -21,7 +21,9 @@
         ></v-checkbox>
         <v-col class="d-flex justify-end">
           <v-btn depressed @click="url = ''">Cancel</v-btn>
-          <v-btn @click="copyToClipboard" class="ml-2" outlined>Copy</v-btn>
+          <v-btn @click="copyToClipboard" class="ml-2" color="primary" outlined
+            >Copy</v-btn
+          >
         </v-col>
       </v-col>
     </v-col>
@@ -32,7 +34,6 @@
 export default {
   data() {
     return {
-      api: undefined,
       url: undefined,
       short: false
     };
@@ -55,7 +56,7 @@ export default {
       }
     },
     shortUrl() {
-      if (this.url) {
+      if (this.url && this.short) {
         this.$axios
           .post("/api/short", { url: this.url })
           .then(res => {
@@ -65,8 +66,9 @@ export default {
             this.$refs.snackbar.open("Failed to short URL");
           });
       } else {
-        this.short = false;
-        this.$refs.snackbar.open("URL is not provided");
+        if (this.short && !this.url) {
+          this.$refs.snackbar.open("URL is not provided");
+        }
       }
     }
   }
