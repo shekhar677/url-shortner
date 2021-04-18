@@ -48,6 +48,7 @@ export default {
           dummy.select();
           document.execCommand("copy");
           document.body.removeChild(dummy);
+          this.$refs.snackbar.open("Link copied to clipboard");
         }
       } else {
         this.$refs.snackbar.open("Please enter a link");
