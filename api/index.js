@@ -16,9 +16,9 @@ app.post("/short", async function (req, res) {
     url
   } = req.body;
 
-  const out = shortUrl.short(url, function (err, url) {
+  shortUrl.short(url, function (err, url) {
     if (err) {
-      res.status(404).json({
+      res.status(400).json({
         message: 'cannot tinyfy',
         error: err
       })

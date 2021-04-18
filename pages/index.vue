@@ -1,5 +1,6 @@
 <template>
   <v-row justify="center" align="center">
+    <snackbar ref="snackbar" />
     <v-col
       cols="12"
       sm="8"
@@ -49,7 +50,7 @@ export default {
           document.body.removeChild(dummy);
         }
       } else {
-        alert("no link provided");
+        this.$refs.snackbar.open("Please enter a link");
       }
     },
     shortUrl() {
@@ -60,11 +61,11 @@ export default {
             this.url = res.data.short;
           })
           .catch(err => {
-            alrt("failed to short url");
+            this.$refs.snackbar.open("Failed to short URL");
           });
       } else {
         this.short = false;
-        alert("no url provided");
+        this.$refs.snackbar.open("URL is not provided");
       }
     }
   }
