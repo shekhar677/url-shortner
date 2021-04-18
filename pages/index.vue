@@ -55,7 +55,7 @@ export default {
       }
     },
     shortUrl() {
-      if (this.url && this.short) {
+      if (this.url) {
         this.$axios
           .post("/api/short", { url: this.url })
           .then(res => {
