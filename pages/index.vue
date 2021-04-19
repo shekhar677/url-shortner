@@ -9,6 +9,7 @@
     >
       <v-col>
         <v-text-field
+          :loading="loading"
           hide-details
           label="Link"
           placeholder="enter a link to make it tiny"
@@ -35,7 +36,8 @@ export default {
   data() {
     return {
       url: undefined,
-      short: false
+      short: false,
+      loading: false
     };
   },
   methods: {
@@ -57,13 +59,16 @@ export default {
     },
     shortUrl() {
       if (this.url && this.short) {
+        this.loading = true;
         this.$axios
           .post("/api/short", { url: this.url })
           .then(res => {
             this.url = res.data.short;
+            this.loading = false;
           })
           .catch(err => {
             this.$refs.snackbar.open("Failed to short URL");
+            this.loading = false;
           });
       } else {
         if (this.short && !this.url) {
