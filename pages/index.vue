@@ -2,6 +2,7 @@
   <v-row justify="center" align="center">
     <snackbar ref="snackbar" />
     <v-switch
+      @change="updateTheme"
       v-model="$vuetify.theme.dark"
       inset
       dense
@@ -84,6 +85,12 @@ export default {
           this.$refs.snackbar.open("URL is not provided");
         }
       }
+    },
+    updateTheme() {
+      localStorage.setItem(
+        "theme",
+        this.$vuetify.theme.dark ? "dark" : "light"
+      );
     }
   }
 };
