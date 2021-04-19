@@ -13,17 +13,20 @@ app.get("/", function (req, res) {
 
 app.post("/short", async function (req, res) {
   const {
-    url
+    url: longUrl
   } = req.body;
 
-  shortUrl.short(url, function (err, url) {
+  shortUrl.short(longUrl, function (err, url) {
     if (err) {
       res.status(400).json({
         message: 'cannot tinyfy',
         error: err
       })
     }
-    urls.push(url);
+    urls.push({
+      longUrl,
+      shortUrl: url
+    });
     res.json({
       short: url
     })
