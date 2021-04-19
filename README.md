@@ -1,4 +1,18 @@
-# url-shortner
+# URL shortener
+
+## Project URL
+
+https://fun-size.herokuapp.com/
+
+## Description
+
+```
+Make long URLs fun size. Enter any url to make it tiny.
+```
+
+## Screenshot
+
+![Screenshot](static/screen.png "URL shortener")
 
 ## Build Setup
 
