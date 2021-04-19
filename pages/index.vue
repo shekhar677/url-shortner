@@ -1,6 +1,15 @@
 <template>
   <v-row justify="center" align="center">
     <snackbar ref="snackbar" />
+    <v-switch
+      v-model="$vuetify.theme.dark"
+      inset
+      dense
+      label="Theme"
+      persistent-hint
+      color="primary"
+      class="position-top-right"
+    ></v-switch>
     <v-col
       cols="12"
       sm="8"
@@ -83,5 +92,11 @@ export default {
 <style scoped>
 .min-h-screen {
   min-height: 100vh;
+}
+.position-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem 1rem 0 0;
 }
 </style>

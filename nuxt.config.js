@@ -76,7 +76,10 @@ export default {
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3
-        }
+        },
+        dark: {
+          primary: colors.green.accent3,
+        },
       }
     }
   },
