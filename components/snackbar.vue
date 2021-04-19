@@ -1,8 +1,8 @@
 <template>
-  <v-snackbar :timeout="timeout" v-model="show" class="pa-0"
+  <v-snackbar :timeout="timeout" v-model="show"
     >{{ message }}
     <template v-slot:action="{ attrs }">
-      <v-btn color="pink" text v-bind="attrs" @click="show = false">
+      <v-btn color="primary" text v-bind="attrs" @click="show = false">
         Close
       </v-btn>
     </template>
@@ -14,11 +14,7 @@ export default {
   data: () => ({
     show: false,
     message: null,
-    timeout: 3500,
-    options: {
-      snackbarColor: "black",
-      textColor: "white--text"
-    }
+    timeout: 3500
   }),
   methods: {
     open(message) {
